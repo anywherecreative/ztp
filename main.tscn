@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://uvm0ryo1wqn2"]
+[gd_scene load_steps=8 format=3 uid="uid://uvm0ryo1wqn2"]
 
 [ext_resource type="Texture2D" uid="uid://tj2t7m11fgiq" path="res://T_Ground1_Color.png" id="1_ekv3j"]
 [ext_resource type="Script" path="res://manage_player.gd" id="2_o5usj"]
 [ext_resource type="PackedScene" uid="uid://catttpol8xboc" path="res://akai.gltf" id="2_t8ry2"]
 [ext_resource type="Script" path="res://camera_follow_player.gd" id="3_1h4jj"]
+[ext_resource type="PackedScene" uid="uid://bw23ggesrxubt" path="res://house.tscn" id="5_dgib7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bd1h4"]
 albedo_texture = ExtResource("1_ekv3j")
@@ -128,5 +129,101 @@ bones/63/rotation = Quaternion(-0.016101, -2.42544e-05, -0.0024805, 0.999867)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_xc3xv")
+
+[node name="House" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0.531073, -29.4181)
+
+[node name="House5" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -10.1402, 0.531073, -29.4181)
+
+[node name="House6" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -21.3731, 0.531073, -29.4181)
+
+[node name="House7" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -33.085, 0.531073, -29.4181)
+
+[node name="House2" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 10.5276, 0.531073, -29.4181)
+
+[node name="House3" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 20.9865, 0.531073, -29.4181)
+
+[node name="House4" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 31.6066, 0.531073, -29.4181)
+
+[node name="House8" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 41.5546, 0.531073, -29.4181)
+
+[node name="House9" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 0, 0.531073, -17.2909)
+
+[node name="House10" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -10.1402, 0.531073, -17.2909)
+
+[node name="House11" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -21.3731, 0.531073, -17.2909)
+
+[node name="House12" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -33.085, 0.531073, -17.2909)
+
+[node name="House13" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 10.5276, 0.531073, -17.2909)
+
+[node name="House14" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 20.9865, 0.531073, -17.2909)
+
+[node name="House15" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 31.6066, 0.531073, -17.2909)
+
+[node name="House16" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 41.5546, 0.531073, -17.2909)
+
+[node name="House17" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0.531073, 15.7897)
+
+[node name="House18" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -10.1402, 0.531073, 15.7897)
+
+[node name="House19" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -21.3731, 0.531073, 15.7897)
+
+[node name="House20" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, -33.085, 0.531073, 15.7897)
+
+[node name="House21" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 10.5276, 0.531073, 15.7897)
+
+[node name="House22" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 20.9865, 0.531073, 15.7897)
+
+[node name="House23" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 31.6066, 0.531073, 15.7897)
+
+[node name="House24" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 41.5546, 0.531073, 15.7897)
+
+[node name="House25" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 0, 0.531073, 27.9169)
+
+[node name="House26" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -10.1402, 0.531073, 27.9169)
+
+[node name="House27" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -21.3731, 0.531073, 27.9169)
+
+[node name="House28" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -33.085, 0.531073, 27.9169)
+
+[node name="House29" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 10.5276, 0.531073, 27.9169)
+
+[node name="House30" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 20.9865, 0.531073, 27.9169)
+
+[node name="House31" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 31.6066, 0.531073, 27.9169)
+
+[node name="House32" parent="." instance=ExtResource("5_dgib7")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, 41.5546, 0.531073, 27.9169)
 
 [editable path="Player/PC"]

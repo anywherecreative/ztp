@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw23ggesrxubt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y7g61"]
+albedo_color = Color(0, 0, 0.490196, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0m1gp"]
+size = Vector3(2.01099, 1.41016, 2.01166)
+
+[node name="house" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="wall" type="CSGBox3D" parent="."]
+size = Vector3(2, 1, 2)
+material = SubResource("StandardMaterial3D_y7g61")
+
+[node name="roof" type="CSGBox3D" parent="."]
+transform = Transform3D(0.99, 0, 0, 0, 0.494975, -0.494975, 0, 0.494975, 0.494975, 0, 0.5, 0)
+size = Vector3(2, 2, 2)
+
+[node name="door" type="CSGBox3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.4, 0, 0, 0, 0.3, -0.95, -0.05, 0)
+size = Vector3(2, 2, 2)
+
+[node name="window1" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.5, 0.1, -0.92)
+size = Vector3(2, 2, 2)
+
+[node name="window2" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.2, 0, 0, 0, 0.1, -0.5, 0.1, -0.92)
+size = Vector3(2, 2, 2)
+
+[node name="window3" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.2, 0, 0, 0, 0.1, -0.5, 0.1, 0.92)
+size = Vector3(2, 2, 2)
+
+[node name="window4" type="CSGBox3D" parent="."]
+transform = Transform3D(0.3, 0, 0, 0, 0.2, 0, 0, 0, 0.1, 0.5, 0.1, 0.92)
+size = Vector3(2, 2, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00476074, 0.205078, 0.0110779)
+shape = SubResource("BoxShape3D_0m1gp")

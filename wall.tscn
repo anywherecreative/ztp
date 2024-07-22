@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://54u5cthnnict"]
+
+[node name="wall" type="StaticBody3D"]
+transform = Transform3D(50, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
