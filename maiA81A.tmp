@@ -3,19 +3,17 @@
 [ext_resource type="Texture2D" uid="uid://tj2t7m11fgiq" path="res://images/T_Ground1_Color.png" id="1_ekv3j"]
 [ext_resource type="Script" path="res://manage_player.gd" id="2_o5usj"]
 [ext_resource type="PackedScene" uid="uid://catttpol8xboc" path="res://akai.gltf" id="2_t8ry2"]
+[ext_resource type="Script" path="res://camera_follow_player.gd" id="3_1h4jj"]
 [ext_resource type="PackedScene" uid="uid://dmohmpw1x84ym" path="res://top_arrow.tscn" id="5_40uvs"]
 [ext_resource type="PackedScene" uid="uid://bw23ggesrxubt" path="res://house.tscn" id="5_dgib7"]
 [ext_resource type="PackedScene" uid="uid://54u5cthnnict" path="res://wall.tscn" id="6_fahm5"]
 [ext_resource type="Script" path="res://mini-map-camera.gd" id="7_dvmux"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xc3xv"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bd1h4"]
 albedo_texture = ExtResource("1_ekv3j")
 uv1_scale = Vector3(10, 10, 1)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5f6xn"]
-size = Vector3(100, 1, 100)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xc3xv"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -23,10 +21,17 @@ size = Vector3(100, 1, 100)
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 shadow_enabled = true
 
+[node name="Ground" type="CSGBox3D" parent="."]
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_bd1h4")
+
 [node name="Player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
-collision_layer = 2
 script = ExtResource("2_o5usj")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, -4)
+script = ExtResource("3_1h4jj")
 
 [node name="PC" parent="Player" instance=ExtResource("2_t8ry2")]
 
@@ -100,17 +105,11 @@ bones/62/rotation = Quaternion(-0.0862939, 0.00166888, -0.0392313, 0.995496)
 bones/63/scale = Vector3(1, 1, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00735, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 shape = SubResource("CylinderShape3D_xc3xv")
 
 [node name="top_arrow" parent="Player" instance=ExtResource("5_40uvs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20, -2.85)
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Player"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 2.5, 0)
-spring_length = 5.0
-
-[node name="Camera3D" type="Camera3D" parent="Player/SpringArm3D"]
 
 [node name="House" parent="." instance=ExtResource("5_dgib7")]
 transform = Transform3D(-1.31134e-07, 0, 3, 0, 3, 0, -3, 0, -1.31134e-07, 0, 0.531073, -29.4181)
@@ -239,15 +238,5 @@ render_target_update_mode = 4
 [node name="mini-map-camera" type="Camera3D" parent="Control/SubViewportContainer/SubViewport"]
 transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 35, 0)
 script = ExtResource("7_dvmux")
-
-[node name="Ground" type="StaticBody3D" parent="."]
-
-[node name="Box" type="CSGBox3D" parent="Ground"]
-size = Vector3(100, 1, 100)
-material = SubResource("StandardMaterial3D_bd1h4")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.046, 0)
-shape = SubResource("BoxShape3D_5f6xn")
 
 [editable path="Player/PC"]

@@ -1,6 +1,18 @@
-[gd_scene format=3 uid="uid://54u5cthnnict"]
+[gd_scene load_steps=4 format=3 uid="uid://54u5cthnnict"]
+
+[ext_resource type="Texture2D" uid="uid://cns2apa8dedrg" path="res://images/Brick_Texture.png" id="1_ecos6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ej8gl"]
+albedo_texture = ExtResource("1_ecos6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i4j8p"]
+size = Vector3(98, 2, 1)
 
 [node name="wall" type="StaticBody3D"]
-transform = Transform3D(50, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(98, 0, 0, 0, 2, 0, 0, 0, 1, 0, 0, 0)
+material = SubResource("StandardMaterial3D_ej8gl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_i4j8p")
