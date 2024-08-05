@@ -27,24 +27,27 @@ func _physics_process(delta):
 	
 	if(current_state == IDLE):
 		pc_node.play("idle");
+		velocity.x = 0;
 	elif(running):
-		speed *= 4;
+		velocity.x = speed * delta * 2
 		pc_node.play("running");
 	else:
 		pc_node.play("walking");
+		velocity.x = speed * delta;
 	
+
 	move_and_slide();
 	
 func get_move_input(delta):
 	var vy = velocity.y
 	velocity.y = 0
-	var input = Input.get_vector("left", "right", "forward", "back")
+	var input = Input.get_vector("turn_left", "turn_right", "move_fwd", "move_back")
 	var dir = Vector3(input.x, 0, input.y).rotated(Vector3.UP, spring_arm.rotation.y)
 	velocity = lerp(velocity, dir * speed, acceleration * delta)
 	velocity.y = vy
 
 
-func _input(event):
+func _input(_event):
 	if (Input.is_action_pressed("move_fwd")):
 		current_state = WALK;
 	elif(Input.is_action_pressed("move_back")):
@@ -60,6 +63,7 @@ func _input(event):
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
+		print(event.relative.x)
 		spring_arm.rotation.x -= event.relative.y * mouse_sensitivity
-		spring_arm.rotation_degrees.x = clamp(spring_arm.rotation_degrees.x, -90.0, 30.0)
+		#spring_arm.rotation_degrees.x = spring_arm.rotation_degrees.x
 		spring_arm.rotation.y -= event.relative.x * mouse_sensitivity

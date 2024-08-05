@@ -222,7 +222,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 49, 1.
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-mouse_filter = 2
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Control"]
 custom_minimum_size = Vector2(300, 300)
