@@ -4,14 +4,15 @@ enum {IDLE, WALK, WALK_REVERSE, RUN};
 @export var speed = 5.0
 @export var acceleration = 4.0
 @export var jump_speed = 8.0
-var rotation_increment = 0.2;
+
 var running = false;
 
 var current_state = IDLE;
 @onready var pc_node = get_node("PC/AnimationPlayer");
 
-@export var mouse_sensitivity = 0.0015
+@export var mouse_sensitivity = 0.0035
 @onready var spring_arm = $SpringArm3D
+@onready var camera = $SpringArm3D/Camera3D
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -22,33 +23,31 @@ func _ready():
 	pc_node.get_animation("running").loop = true;
 
 func _physics_process(delta):
+	var move_speed = speed;
 	velocity.y += -gravity * delta
-	get_move_input(delta)
 	
 	if(current_state == IDLE):
 		pc_node.play("idle");
-		velocity.x = 0;
 	elif(running):
-		velocity.x = speed * delta * 2
 		pc_node.play("running");
+		move_speed *=2;
 	else:
 		pc_node.play("walking");
-		velocity.x = speed * delta;
+		
+	var input_direction = Input.get_vector("move_left","move_right","move_forward","move_back");
+	var direction = ($SpringArm3D.transform.basis * Vector3(input_direction.x,0,input_direction.y)).normalized();
 	
+	if direction:
+		velocity.x = direction.x * move_speed;
+		velocity.z = direction.z * move_speed;
+	else:
+		velocity = Vector3(0,0,0);
 
 	move_and_slide();
-	
-func get_move_input(delta):
-	var vy = velocity.y
-	velocity.y = 0
-	var input = Input.get_vector("turn_left", "turn_right", "move_fwd", "move_back")
-	var dir = Vector3(input.x, 0, input.y).rotated(Vector3.UP, spring_arm.rotation.y)
-	velocity = lerp(velocity, dir * speed, acceleration * delta)
-	velocity.y = vy
 
 
 func _input(_event):
-	if (Input.is_action_pressed("move_fwd")):
+	if (Input.is_action_pressed("move_forward")):
 		current_state = WALK;
 	elif(Input.is_action_pressed("move_back")):
 		current_state = WALK_REVERSE;
@@ -63,7 +62,7 @@ func _input(_event):
 	
 func _unhandled_input(event):
 	if event is InputEventMouseMotion:
-		print(event.relative.x)
+
 		spring_arm.rotation.x -= event.relative.y * mouse_sensitivity
 		#spring_arm.rotation_degrees.x = spring_arm.rotation_degrees.x
 		spring_arm.rotation.y -= event.relative.x * mouse_sensitivity
