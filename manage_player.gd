@@ -37,6 +37,9 @@ func _physics_process(delta):
 	var input_direction = Input.get_vector("move_left","move_right","move_forward","move_back");
 	var direction = ($SpringArm3D.transform.basis * Vector3(input_direction.x,0,input_direction.y)).normalized();
 	
+	if input_direction != Vector2(0,0):
+		get_tree().get_nodes_in_group("player")[0].rotation_degrees.y =$SpringArm3D.rotation_degrees.y- rad_to_deg(input_direction.angle()) + 90;
+	
 	if direction:
 		velocity.x = direction.x * move_speed;
 		velocity.z = direction.z * move_speed;

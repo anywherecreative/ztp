@@ -28,7 +28,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 collision_layer = 2
 script = ExtResource("2_o5usj")
 
-[node name="PC" parent="Player" instance=ExtResource("2_t8ry2")]
+[node name="PC" parent="Player" groups=["player"] instance=ExtResource("2_t8ry2")]
 
 [node name="Skeleton3D" parent="Player/PC/walking" index="0"]
 bones/0/rotation = Quaternion(-0.700922, 0.00261595, -0.0317353, 0.712527)
